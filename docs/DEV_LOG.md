@@ -9,13 +9,13 @@ The first entries are filled in from the initial setup. Replace the `REPLACE` pa
 ### 1. 2026-11-20: Project setup and first app version
 - **What:** Created the Express app (`src/app.js`, `src/tasks.js`, `src/server.js`) and a simple page in `public/index.html`.
 - **Why:** We needed a small app with real logic (validation, stats) so the tests mean something.
-- **Evidence:** commit `REPLACE` → https://github.com/REPLACE/REPLACE/commit/REPLACE
+- **Evidence:** commit `aec35a8` → https://github.com/damianolvs/EV4/commit/aec35a8
 - **Problems / fixes:** None.
 
 ### 2. 2026-11-20: Unit and API tests
 - **What:** Wrote 20 tests in `test/` using Node's built-in test runner: normal, edge (max title length, empty list) and invalid cases (empty title, bad priority, bad JSON, missing id).
 - **Why:** The brief asks for at least five meaningful tests with normal, edge and invalid cases.
-- **Evidence:** commit `REPLACE`; screenshot of `npm test` output: `docs/img/npm-test.png`
+- **Evidence:** commit `aec35a8`; screenshot of `npm test` output: `docs/img/npm-test.png`
 - **Problems / fixes:** `node --test test/` failed with `MODULE_NOT_FOUND` because Node 22 treated `test/` as a file. Changed the script to plain `node --test`, which finds the test files by itself.
 
 ### 3. 2026-11-__: GitHub Actions CI

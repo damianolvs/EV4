@@ -30,9 +30,9 @@ Fill this in with the real pull request. Steps to produce it:
 
 | Item | Link / screenshot |
 |------|-------------------|
-| Pull request | `https://github.com/REPLACE/REPLACE/pull/__` |
+| Pull request | `https://github.com/damianolvs/EV4/pull/__` |
 | Failing run (red) | `docs/img/pr-blocked.png` |
-| Fix commit | `https://github.com/REPLACE/REPLACE/commit/__` |
+| Fix commit | `https://github.com/damianolvs/EV4/commit/__` |
 | Green run + merged | `docs/img/pr-merged.png` |
 
 What happened: _write 2 or 3 sentences here, in your words._

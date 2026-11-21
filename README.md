@@ -17,8 +17,8 @@ You can add tasks with a priority (low, medium, high), mark them done, delete th
 ## Install
 
 ```bash
-git clone https://github.com/REPLACE-USER/REPLACE-REPO.git
-cd REPLACE-REPO
+git clone https://github.com/damianolvs/EV4.git
+cd EV4
 npm ci
 ```
 
