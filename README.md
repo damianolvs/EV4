@@ -2,9 +2,6 @@
 
 A small task tracker web app (Node.js + Express). Built for Integral Web Development, Unit 4, Evidence 4: test and release a web app.
 
-**Live app:** `https://REPLACE-WITH-YOUR-RENDER-URL.onrender.com`
-**Health check:** `https://REPLACE-WITH-YOUR-RENDER-URL.onrender.com/health`
-
 ## What it does
 
 You can add tasks with a priority (low, medium, high), mark them done, delete them, and see how many are finished. Data is kept in memory, so it resets when the server restarts. That's fine for this assignment.
@@ -71,4 +68,4 @@ No passwords, tokens or keys are stored in this repository. `.env` files are ign
 
 ## Team
 
-- Damian (REPLACE with your full name): solo developer
+- Damian Olivas: solo developer
