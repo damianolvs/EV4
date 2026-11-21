@@ -8,7 +8,7 @@ Anyone on the team should be able to follow these five phases.
 
 Check these before you merge or deploy anything:
 
-- [ ] The pull request has a green `test` check and one approval.
+- [ ] The pull request has a green `test` check.
 - [ ] `npm ci && npm test` passes on your machine from a clean clone.
 - [ ] No secrets in the diff (no `.env`, no tokens, no keys).
 - [ ] You know which commit is live right now (Render dashboard → service → Events). If the deploy goes bad, that's the one you go back to.
@@ -51,7 +51,7 @@ git checkout -b revert-bad-change
 git push -u origin revert-bad-change
 ```
 
-Open a pull request, wait for CI and approval, merge. Render deploys the revert.
+Open a pull request, wait for CI, merge. Render deploys the revert.
 
 If you used option A, auto deploy may pause until you re-enable it or push a fix. Check the dashboard.
 

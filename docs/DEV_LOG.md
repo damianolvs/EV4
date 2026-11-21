@@ -25,13 +25,13 @@ The first entries are filled in from the initial setup. Replace the `REPLACE` pa
 - **Problems / fixes:** REPLACE (or "None")
 
 ### 4. 2026-11-__: Branch protection on main
-- **What:** Turned on the rules: pull request required, 1 approval, `test` check required.
+- **What:** Turned on the rules: pull request required, `test` check required, no bypass. No approval rule because I'm the only developer.
 - **Why:** So nothing reaches `main` without review and passing tests.
 - **Evidence:** `docs/img/branch-protection.png`
 - **Problems / fixes:** REPLACE (for example: the `test` check wasn't in the list until CI had run once)
 
 ### 5. 2026-11-__: Blocked pull request
-- **What:** Opened a PR with a deliberate bug; CI failed and the merge was blocked. Fixed it, got approval and merged.
+- **What:** Opened a PR with a deliberate bug; CI failed and the merge was blocked. Fixed it, CI went green and I merged.
 - **Why:** The brief asks us to document a PR blocked by a failing test.
 - **Evidence:** see `docs/BRANCH_PROTECTION.md` (PR link + screenshots)
 - **Problems / fixes:** REPLACE

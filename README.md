@@ -55,7 +55,7 @@ GitHub Actions (`.github/workflows/ci.yml`) runs `npm ci` and `npm test` on ever
 
 ## Merge rules
 
-`main` is protected. Changes only get in through a pull request with one approval and a passing `test` check. Details and settings: [docs/BRANCH_PROTECTION.md](docs/BRANCH_PROTECTION.md). The blocked pull request is documented there too.
+`main` is protected. Changes only get in through a pull request with a passing `test` check. This project has one developer, so a second-person approval isn't required. Details and settings: [docs/BRANCH_PROTECTION.md](docs/BRANCH_PROTECTION.md). The blocked pull request is documented there too.
 
 ## Deploy
 
@@ -71,5 +71,4 @@ No passwords, tokens or keys are stored in this repository. `.env` files are ign
 
 ## Team
 
-- REPLACE: member 1
-- REPLACE: member 2
+- Damian (REPLACE with your full name): solo developer
