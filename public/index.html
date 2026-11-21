@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 min-h-screen">
+  <main class="max-w-xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-slate-800 mb-1">Task Tracker</h1>
+    <p id="stats" class="text-slate-500 mb-6">Loading...</p>
+
+    <form id="form" class="flex gap-2 mb-2">
+      <input id="title" maxlength="100" placeholder="New task" required
+        class="flex-1 rounded border border-slate-300 px-3 py-2">
+      <select id="priority" class="rounded border border-slate-300 px-2">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button class="rounded bg-indigo-600 text-white px-4 py-2 hover:bg-indigo-700">Add</button>
+    </form>
+    <p id="error" class="text-red-600 text-sm mb-4 h-5"></p>
+
+    <ul id="list" class="space-y-2"></ul>
+  </main>
+
+  <script>
+    const list = document.getElementById('list');
+    const stats = document.getElementById('stats');
+    const errorBox = document.getElementById('error');
+    const colors = { low: 'bg-green-100 text-green-800', medium: 'bg-yellow-100 text-yellow-800', high: 'bg-red-100 text-red-800' };
+
+    async function load() {
+      const [tasks, s] = await Promise.all([
+        fetch('/api/tasks').then(r => r.json()),
+        fetch('/api/stats').then(r => r.json()),
+      ]);
+      stats.textContent = `${s.done} of ${s.total} done (${s.percent}%)`;
+      list.innerHTML = '';
+      for (const t of tasks) {
+        const li = document.createElement('li');
+        li.className = 'flex items-center gap-3 bg-white rounded p-3 shadow-sm';
+        const box = document.createElement('input');
+        box.type = 'checkbox'; box.checked = t.done;
+        box.onchange = async () => { await fetch(`/api/tasks/${t.id}/toggle`, { method: 'PATCH' }); load(); };
+        const span = document.createElement('span');
+        span.className = 'flex-1' + (t.done ? ' line-through text-slate-400' : '');
+        span.textContent = t.title;
+        const badge = document.createElement('span');
+        badge.className = `text-xs px-2 py-1 rounded ${colors[t.priority]}`;
+        badge.textContent = t.priority;
+        const del = document.createElement('button');
+        del.className = 'text-slate-400 hover:text-red-600';
+        del.textContent = '✕';
+        del.onclick = async () => { await fetch(`/api/tasks/${t.id}`, { method: 'DELETE' }); load(); };
+        li.append(box, span, badge, del);
+        list.append(li);
+      }
+    }
+
+    document.getElementById('form').onsubmit = async (e) => {
+      e.preventDefault();
+      errorBox.textContent = '';
+      const res = await fetch('/api/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: document.getElementById('title').value, priority: document.getElementById('priority').value }),
+      });
+      if (!res.ok) { errorBox.textContent = (await res.json()).error; return; }
+      e.target.reset();
+      load();
+    };
+    load();
+  </script>
+</body>
+</html>

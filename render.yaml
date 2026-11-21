@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: task-tracker
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true   # deploys on every push to main (only reachable through a merged PR)
+    envVars:
+      - key: NODE_VERSION
+        value: 22
